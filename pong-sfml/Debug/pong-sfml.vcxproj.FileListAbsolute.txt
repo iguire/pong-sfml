@@ -1,0 +1,1 @@
+C:\Users\Igor\git\pong-sfml\pong-sfml\Debug\pong-sfml.vcxproj.CopyComplete
