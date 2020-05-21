@@ -4,3 +4,5 @@
 .vs
 *.tlog
 *.exe
+*.ilk
+*.pdb

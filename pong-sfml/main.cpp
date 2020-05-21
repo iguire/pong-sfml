@@ -12,7 +12,7 @@ sf::Vector2f AI_SIZE = PLAYER_SIZE;
 float BALL_SIZE = 10.f;
 float MARGIN_SIZE = 100.f;
 float DIVIDER_SIZE = 5.f;
-
+int PLAYER_SPEED = 5000;
 static string filename = "player_scores.json";
 
 class MyDrawable : public sf::Drawable
@@ -49,7 +49,7 @@ public:
 
 	sf::RenderWindow* window;
 	sf::Event* w_event;
-
+	sf::Clock* timeClock;
 	sf::RectangleShape* player;
 	sf::RectangleShape* ai_player;
 	sf::RectangleShape* divider;
@@ -96,7 +96,7 @@ Game::Game()
 	ai_player = new sf::RectangleShape(AI_SIZE);
 	divider = new sf::RectangleShape(sf::Vector2f(DIVIDER_SIZE, window->getSize().y));
 	ball = new sf::CircleShape(BALL_SIZE);
-
+	timeClock = new sf::Clock();
 	w_event = new sf::Event();
 
 	entities.push_back((MyDrawable*)player);
@@ -185,42 +185,25 @@ void Game::handle_events()
 
 void Game::handle_input()
 {
-	
-	//if (sf::Event::KeyPressed)
-	//	switch (w_event->key.code)
-	//	{
-	//	case sf::Keyboard::Left:
-	//		player->move(-1, 0);
-	//		break;
-	//	case sf::Keyboard::Right:
-	//		player->move(1, 0);
-	//		break;
-	//	case sf::Keyboard::Up:
-	//		player->move(0, -1);
-	//		break;
-	//	case sf::Keyboard::Down:
-	//		player->move(0, 1);
-	//		break;
-	//	case sf::Keyboard::Space:
-	//		toggle_pause();
-	//	}
+	sf::Time deltaT = timeClock->getElapsedTime();
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
-		player->move(-1, 0);
+		player->move(-1 * PLAYER_SPEED * deltaT.asSeconds(), 0);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
-		player->move(1, 0);
+		player->move(1 * PLAYER_SPEED * deltaT.asSeconds(), 0);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		player->move(0, -1);
+		player->move(0, -1 * PLAYER_SPEED * deltaT.asSeconds());
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
-		player->move(0, 1);
+		player->move(0, 1 * PLAYER_SPEED * deltaT.asSeconds());
 	}
-	
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+		toggle_pause();
 }
 
 void Game::sync()
@@ -259,10 +242,10 @@ int main() {
 	
 	while (myGame->window->isOpen()) 
 	{
+		myGame->timeClock->restart();
 		myGame->handle_events();
 		myGame->handle_input();
 		myGame->sync();
-	
 	}
 	return 0;
 }
