@@ -228,7 +228,10 @@ void Game::sync()
 	window->clear();
 
 	for (auto i : entities)
-		window->draw(*i);
+	{
+		if (i->Enabled && i->Visible)
+			window->draw(*i);
+	}
 	
 	window->display();
 }
