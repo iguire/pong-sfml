@@ -1,8 +1,5 @@
-*.o
-*.log
-*.dll
-.vs
-*.tlog
-*.exe
-*.ilk
-*.pdb
+!*.sln
+!*.cpp
+!*.h
+!pong-sfml/
+!.gitattributes
