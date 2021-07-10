@@ -5,20 +5,9 @@
 #include <iostream>
 #include <list>
 #include "file_io.h"
+#include "my_drawable.h"
 
 using namespace std;
-
-class MyDrawable : public sf::Drawable
-{
-public:
-	MyDrawable();
-
-	bool Enabled;
-	bool Visible;
-
-	void toggleVisible();
-	void toggleEnabled();
-};
 
 class Game
 {
