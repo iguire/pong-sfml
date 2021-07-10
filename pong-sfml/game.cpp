@@ -1,4 +1,3 @@
-#pragma once
 #include "game.h"
 
 using namespace std;
@@ -10,23 +9,6 @@ float BALL_SIZE = 10.f;
 float MARGIN_SIZE = 100.f;
 float DIVIDER_SIZE = 5.f;
 int PLAYER_SPEED = 5000;
-
-
-MyDrawable::MyDrawable()
-{
-	Enabled = true;
-	Visible = true;
-}
-
-void MyDrawable::toggleEnabled()
-{
-	Enabled = !Enabled;
-}
-
-void MyDrawable::toggleVisible()
-{
-	Visible = !Visible;
-}
 
 Game::Game()
 {

@@ -146,6 +146,7 @@
     <ClCompile Include="file_io.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="my_drawable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -153,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="file_io.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="my_drawable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

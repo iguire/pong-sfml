@@ -1,8 +1,8 @@
 #ifndef PONG_FILE_IO
 #define PONG_FILE_IO
 
-#include <json/json.h>
 #include <SFML/Graphics.hpp>
+#include <json/json.h>
 
 using namespace std;
 

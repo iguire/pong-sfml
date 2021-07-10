@@ -24,6 +24,9 @@
     <ClCompile Include="file_io.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="my_drawable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -33,6 +36,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="file_io.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="my_drawable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
