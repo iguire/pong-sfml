@@ -1,4 +1,5 @@
 #include "game.h"
+#include "entity_manager.h"
 
 using namespace std;
 
@@ -12,6 +13,8 @@ int PLAYER_SPEED = 5000;
 
 Game::Game()
 {
+
+	// init named drawables
 	window = new sf::RenderWindow(sf::VideoMode(800, 800), player_name);
 	player = new sf::RectangleShape(PLAYER_SIZE);
 	ai_player = new sf::RectangleShape(AI_SIZE);
@@ -20,10 +23,15 @@ Game::Game()
 	timeClock = new sf::Clock();
 	w_event = new sf::Event();
 
-	entities.push_back((MyDrawable*)player);
-	entities.push_back((MyDrawable*)ai_player);
-	entities.push_back((MyDrawable*)divider);
-	entities.push_back((MyDrawable*)ball);
+	// init drawable entity vector
+	drawable_mgr = EntityManager();
+
+	// populate vector with entities
+	drawable_mgr.entities.push_back((MyDrawable*)player);
+	drawable_mgr.entities.push_back((MyDrawable*)ai_player);
+	drawable_mgr.entities.push_back((MyDrawable*)divider);
+	drawable_mgr.entities.push_back((MyDrawable*)ball);
+
 
 	player->setFillColor(sf::Color::Green);
 	ai_player->setFillColor(sf::Color::Red);
@@ -130,11 +138,20 @@ void Game::sync()
 {
 	window->clear();
 
-	for (auto i : entities)
-	{
+	for(auto i : drawable_mgr.entities)
 		if (i->Enabled && i->Visible)
 			window->draw(*i);
-	}
 
 	window->display();
+}
+
+bool collision_detector(sf::RectangleShape* c_shape, sf::RenderWindow* window)
+{
+	if ((c_shape->getPosition().y < 0) || ((c_shape->getPosition().y + c_shape->getSize().y) > window->getSize().y) ||
+		(c_shape->getPosition().x < 0) || ((c_shape->getPosition().x + c_shape->getSize().x) > window->getSize().x))
+	{
+		return true;
+	}
+	else
+		return false;
 }

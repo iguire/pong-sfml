@@ -47,14 +47,3 @@ bool save_scores(std::vector<std::pair<string, int>> player_scores, string file)
 	}
 	return true;
 }
-
-bool collision_detector(sf::RectangleShape* owner, sf::RenderWindow* window)
-{
-	if ((owner->getPosition().y < 0) || ((owner->getPosition().y + owner->getSize().y) > window->getSize().y) ||
-		(owner->getPosition().x < 0) || ((owner->getPosition().x + owner->getSize().x) > window->getSize().x))
-	{
-		return true;
-	}
-	else
-		return false;
-}

@@ -6,6 +6,7 @@
 #include <list>
 #include "file_io.h"
 #include "my_drawable.h"
+#include "entity_manager.h"
 
 using namespace std;
 
@@ -29,6 +30,10 @@ public:
 	void handle_input();
 	void sync();
 
+	EntityManager drawable_mgr;
+
+	// entity pointers for named access
+	// they will be stored in the EntityManager
 	sf::RenderWindow* window;
 	sf::Event* w_event;
 	sf::Clock* timeClock;
@@ -36,10 +41,6 @@ public:
 	sf::RectangleShape* ai_player;
 	sf::RectangleShape* divider;
 	sf::CircleShape* ball;
-
-	//wait until all entities are initialized
-	//before assigning pointers!
-	vector<MyDrawable*> entities;
 
 private:
 	game_states GAME_STATE;
@@ -51,4 +52,7 @@ private:
 	void reset_ball(sf::RectangleShape* owner);
 	void reset_players();
 };
+
+bool collision_detector(sf::RectangleShape* owner, sf::RenderWindow* window);
+
 #endif

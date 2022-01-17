@@ -41,5 +41,8 @@
     <ClInclude Include="my_drawable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="entity_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -8,7 +8,4 @@ using namespace std;
 
 Json::Value load_scores(string);
 bool save_scores(std::vector<std::pair<string, int>> player_scores, string file);
-
-bool collision_detector(sf::RectangleShape* owner, sf::RenderWindow* window);
-
 #endif
